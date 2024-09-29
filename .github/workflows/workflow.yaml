@@ -1,0 +1,17 @@
+name: Configure Github
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    terraform:
+        name: AWS Github OpenID Connector
+        runs-on: TODO
+
+        steps:
+            - name: Setup Terraform with specified version on the runner
+              uses: hashicorp/setup-terraform@v2
+              with:
+                terraform_version: 1.5.7

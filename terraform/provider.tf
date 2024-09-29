@@ -8,8 +8,7 @@ terraform {
 
     backend "s3" {
         bucket         = "natanchagas-aws-iam-github-ocid"
-        key            = "path/to/my/key"
-        region         = "eu-west-1"
+        key            = "terraform.tfstate"
     }
   }
 
