@@ -9,6 +9,7 @@ terraform {
     backend "s3" {
         bucket         = "natanchagas-aws-iam-github-ocid"
         key            = "terraform.tfstate"
+        region         = "us-east-1"
     }
   }
 
