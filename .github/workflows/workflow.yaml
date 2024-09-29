@@ -26,6 +26,9 @@ jobs:
             - name: Checkout the repository to the runner
               uses: actions/checkout@v4
 
+            - name: Change directory
+              run: cd terraforms
+
             - name: Terraform init
               id: init
               run: terraform init
