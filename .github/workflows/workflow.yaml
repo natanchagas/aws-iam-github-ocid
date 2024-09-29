@@ -29,30 +29,28 @@ jobs:
             - name: Checkout the repository to the runner
               uses: actions/checkout@v4
 
-            - name: Go to terraform directory
-              run: cd terraform
-
-            - name: list
-              run: pwd; ls -la;
-              working-directory: terraform
-
             - name: Terraform init
               id: init
               run: terraform init
+              working-directory: terraform
 
             - name: Terraform format
               id: fmt
               run: terraform fmt -check
+              working-directory: terraform
 
             - name: Terraform validate
               id: validate
               run: terraform validate
+              working-directory: terraform
 
             - name: Terraform plan
               id: plan
               if: github.event_name == 'pull_request'
               run: terraform plan -no-color -input=false
               continue-on-error: true
+              working-directory: terraform
 
             - name: Terraform Apply
               run: terraform apply -auto-approve -input=false
+              working-directory: terraform
