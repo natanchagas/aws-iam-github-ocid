@@ -23,10 +23,14 @@ jobs:
               with:
                 terraform_version: 1.5.7
 
+            - name: list
+              run: pwd; ls -la;
+
             - name: Checkout the repository to the runner
               uses: actions/checkout@v4
-              with:
-               path: .
+
+            - name: list
+              run: pwd; ls -la;
 
             - name: Terraform init
               id: init
