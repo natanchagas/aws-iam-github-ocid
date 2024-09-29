@@ -29,6 +29,9 @@ jobs:
             - name: Checkout the repository to the runner
               uses: actions/checkout@v4
 
+            - name: Go to terraform directory
+              run: cd terraform
+
             - name: list
               run: pwd; ls -la;
 
