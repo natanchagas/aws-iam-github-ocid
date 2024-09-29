@@ -8,7 +8,7 @@ on:
 jobs:
     terraform:
         name: AWS Github OpenID Connector
-        runs-on: TODO
+        runs-on: ubuntu-latest
 
         steps:
             - name: Setup Terraform with specified version on the runner
