@@ -1,4 +1,4 @@
-name: Configure Github
+name: Deploy Github OCID
 
 on:
     issues:
