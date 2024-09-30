@@ -1,0 +1,9 @@
+# IDE configurations
+.fleet
+.vscode
+
+# Terraform files
+**/.terraform/*
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
