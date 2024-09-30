@@ -1,9 +1,9 @@
 name: Configure Github
 
 on:
-    push:
-        branches:
-            - main
+    issues:
+        types:
+          - labeled
 
 env:
     # verbosity setting for Terraform logs
@@ -14,17 +14,35 @@ env:
 
 jobs:
     terraform:
+        if: github.event.label.name == 'deploy'
         name: AWS Github OpenID Connector
         runs-on: ubuntu-latest
 
         steps:
+            - name: Install Python 3.12
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.12'
+
+            - name: Install AWS CLI
+              run: |
+                python -m pip install --upgrade pip
+                pip install awscli
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-east-1
+
+            - name: Create S3 Bucket
+              run: aws s3 mb s3://natanchagas-aws-iam-github-ocid --region us-east-1
+
             - name: Setup Terraform with specified version on the runner
               uses: hashicorp/setup-terraform@v3
               with:
                 terraform_version: 1.5.7
-
-            - name: list
-              run: pwd; ls -la;
 
             - name: Checkout the repository to the runner
               uses: actions/checkout@v4
