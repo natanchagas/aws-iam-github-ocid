@@ -44,8 +44,8 @@ jobs:
               continue-on-error: true
               working-directory: terraform
 
-            - name: Terraform Apply
-              run: terraform  -destroy -auto-approve -input=false
+            - name: Terraform destroy
+              run: terraform destroy -auto-approve -input=false
               working-directory: terraform
 
             - name: Install Python 3.12
